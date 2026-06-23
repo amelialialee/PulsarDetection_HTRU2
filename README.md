@@ -10,6 +10,7 @@ A machine learning pipeline that classifies radio signal candidates from the HTR
 PulsarDetection_HTRU2/
 ├── data/
 │   └── HTRU_2.csv  (Raw dataset)
+├── Images/ 
 ├── models/
 │   └── pulsar_pipeline.joblib  (Trained XGBoost pipeline)
 ├── reports/
@@ -145,7 +146,7 @@ The application provides interactive signal classification with SHAP-based expla
 **Install dependencies:**
 
 ```bash
-pip install streamlit joblib shap numpy matplotlib pandas scikit-learn xgboost imbalanced-learn
+pip install -r requirements.txt
 ```
 
 **Run the app:**
@@ -156,12 +157,22 @@ streamlit run src/app.py
 
 **Sections:**
 
+
 - **Signal Classification**:  enter the 8 signal feature values and classify a signal. Returns a prediction, confidence score and SHAP  and a feature impact bar chart explaining the result for that specific signal.
+
+![Feature input](Images/FeatureInput.png)
+  ![Prediction output](Images/PredictionOutput.png)
+  ![SHAP waterfall](Images/SHAP1.png)
+  ![Feature impact](Images/SHAP2.png)
 
 - **Overview**: background and model information across three tabs
   - **WPulsar Overview**: Generally what pulsars are, how they are detected, and what this project is trying to do
   - **Model Overview**: The XGBoost model, performance metrics, tuned hyperparameters, primary metric reasoning and the HTRU2 dataset.
   - **Feature Guide**: What each of the 8 signal features measures, how the two signal components (Integrated Profile and DM-SNR Curve) work, and what distinguishes pulsar signals from background noise feature by feature.
+
+  ![Overview](Images/Overview.png)
+  ![Overview model](Images/Overview2.png)
+  ![Overview features](Images/Overview3.png)
 ---
 
 ## Notebook/Pipeline
@@ -200,7 +211,7 @@ ipykernel==6.31.0
 
 ---
 
-## reference
+## Reference
 
 R. J. Lyon et al., *Fifty Years of Pulsar Candidate Selection*, MNRAS, 2016.  
 HTRU2 dataset via the [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/372/htru2).
